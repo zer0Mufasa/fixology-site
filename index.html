@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixology – The AI Operating System for Device Repair</title>
+    <meta name="description" content="Enterprise AI diagnostics trusted by 10,000+ technicians. 500+ symptoms mapped, 100,000+ repair cases analyzed. Free diagnosis for customers. Complete SaaS platform for repair shops.">
+    
+    <meta property="og:title" content="Fixology – The AI Operating System for Device Repair">
+    <meta property="og:description" content="Enterprise AI diagnostics powered by 100,000+ real repair cases.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fixologyai.com">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/chat-widget.css">
+    
+    <style>
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 2rem 4rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 150%; height: 150%; background: radial-gradient(ellipse at center, rgba(142, 117, 255, 0.15) 0%, transparent 50%); pointer-events: none; }
+        .hero::after { content: ''; position: absolute; top: 20%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(109, 247, 255, 0.08) 0%, transparent 60%); pointer-events: none; }
+        .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; text-align: center; }
+        .hero-badge { margin-bottom: 1.5rem; }
+        .hero-title { font-size: clamp(2.75rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.03em; }
+        .hero-subtitle { font-size: clamp(1.125rem, 2vw, 1.375rem); color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem; line-height: 1.7; }
+        .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+        .hero-trust { display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-subtle); }
+        .hero-trust-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--text-tertiary); }
+        .hero-trust-item strong { color: var(--text-primary); }
+        
+        .devices-marquee { overflow: hidden; padding: 2rem 0; background: var(--bg-secondary); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+        .devices-track { display: flex; gap: 3rem; animation: marquee 30s linear infinite; width: max-content; }
+        .device-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.9375rem; color: var(--text-secondary); white-space: nowrap; }
+        .device-icon { font-size: 1.5rem; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        
+        .metrics-section { background: var(--bg-tertiary); border-bottom: 1px solid var(--border-subtle); }
+        .metrics-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2rem; }
+        .metric-card { text-align: center; padding: 2rem 1rem; }
+        .metric-value { font-size: 3rem; font-weight: 800; background: var(--gradient-lavender); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 0.5rem; }
+        .metric-label { font-size: 0.9375rem; color: var(--text-secondary); }
+        
+        .awards-bar { display: flex; align-items: center; justify-content: center; gap: 3rem; padding: 1.5rem 2rem; background: rgba(142, 117, 255, 0.05); border-bottom: 1px solid var(--border-subtle); flex-wrap: wrap; }
+        .award-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.8125rem; color: var(--text-tertiary); }
+        .award-icon { font-size: 1.25rem; }
+        
+        .how-it-works { background: var(--bg-primary); }
+        .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; position: relative; }
+        .steps-grid::before { content: ''; position: absolute; top: 50px; left: 15%; right: 15%; height: 2px; background: linear-gradient(90deg, transparent, var(--lavender-400), var(--cyan-glow), var(--lavender-400), transparent); opacity: 0.3; }
+        .step-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-2xl); padding: 2rem; text-align: center; position: relative; transition: all 0.3s; }
+        .step-card:hover { border-color: var(--lavender-400); transform: translateY(-8px); box-shadow: var(--shadow-glow); }
+        .step-number { width: 48px; height: 48px; background: var(--gradient-lavender); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem; margin: 0 auto 1.5rem; box-shadow: var(--shadow-glow); position: relative; z-index: 1; }
+        .step-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .step-card h3 { margin-bottom: 0.75rem; }
+        .step-card p { color: var(--text-tertiary); font-size: 0.9375rem; }
+        
+        .features-section { background: var(--bg-secondary); }
+        .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        .feature-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 1.5rem; transition: all 0.3s; }
+        .feature-card:hover { border-color: var(--border-medium); transform: translateY(-4px); }
+        .feature-icon { width: 48px; height: 48px; background: rgba(142, 117, 255, 0.1); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem; }
+        .feature-card h4 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .feature-card p { font-size: 0.875rem; color: var(--text-tertiary); }
+        
+        .dual-section { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+        .audience-card { background: var(--bg-card); border: 1px solid var(--border-medium); border-radius: var(--radius-2xl); padding: 2.5rem; }
+        .audience-card.featured { border-color: var(--lavender-400); box-shadow: var(--shadow-glow); }
+        .audience-icon { font-size: 3rem; margin-bottom: 1.5rem; }
+        .audience-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .audience-subtitle { color: var(--text-secondary); margin-bottom: 1.5rem; }
+        .audience-features { list-style: none; margin-bottom: 2rem; }
+        .audience-features li { padding: 0.75rem 0; border-bottom: 1px solid var(--border-subtle); font-size: 0.9375rem; display: flex; align-items: center; gap: 0.75rem; }
+        .audience-features li::before { content: '✓'; color: var(--cyan-glow); font-weight: 700; }
+        
+        .testimonials-section { background: var(--bg-tertiary); }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .testimonial-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 1.5rem; }
+        .testimonial-rating { color: #FFB300; margin-bottom: 1rem; letter-spacing: 2px; }
+        .testimonial-text { font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7; font-style: italic; }
+        .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+        .testimonial-avatar { width: 40px; height: 40px; background: var(--gradient-lavender); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; }
+        .testimonial-name { font-weight: 600; font-size: 0.875rem; }
+        .testimonial-role { font-size: 0.75rem; color: var(--text-tertiary); }
+        
+        .partners-bar { background: var(--bg-secondary); padding: 3rem 2rem; text-align: center; border-top: 1px solid var(--border-subtle); }
+        .partners-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-tertiary); margin-bottom: 2rem; }
+        .partners-logos { display: flex; align-items: center; justify-content: center; gap: 4rem; flex-wrap: wrap; opacity: 0.5; }
+        .partner-logo { font-size: 1.25rem; font-weight: 700; color: var(--text-secondary); }
+        
+        .cta-section { background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-tertiary) 100%); text-align: center; position: relative; overflow: hidden; }
+        .cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 800px; height: 400px; background: radial-gradient(ellipse, rgba(142, 117, 255, 0.15) 0%, transparent 60%); }
+        .cta-content { position: relative; z-index: 1; }
+        .cta-content h2 { margin-bottom: 1rem; }
+        .cta-content p { color: var(--text-secondary); font-size: 1.125rem; margin-bottom: 2rem; }
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        
+        @media (max-width: 1024px) {
+            .metrics-grid { grid-template-columns: repeat(3, 1fr); }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .dual-section { grid-template-columns: 1fr; }
+            .steps-grid { grid-template-columns: 1fr; }
+            .steps-grid::before { display: none; }
+        }
+        @media (max-width: 768px) {
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .features-grid, .testimonials-grid { grid-template-columns: 1fr; }
+            .hero-trust { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">🧠</span>
+                Fixology
+            </a>
+            <ul class="nav-links">
+                <li><a href="diagnose.html">Diagnose</a></li>
+                <li><a href="for-shops.html">For Shops</a></li>
+                <li><a href="devices.html">Devices</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="docs.html">Docs</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="login.html" class="btn btn-ghost">Login</a>
+                <a href="https://chatgpt.com/g/g-692e842d0dc48191989c1f877d00165d-fixology-repair-assistant" target="_blank" class="btn btn-primary">Try Fixology AI →</a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge"><span class="badge-dot"></span>Trusted by 10,000+ Technicians</span>
+                </div>
+                <h1 class="hero-title">
+                    The <span class="text-gradient">AI Operating System</span> for Device Repair
+                </h1>
+                <p class="hero-subtitle">
+                    Enterprise-grade diagnostics powered by <strong>100,000+ real repair cases</strong>. 
+                    The world's largest symptom–cause–test graph. Trusted by repair shops nationwide.
+                </p>
+                <div class="hero-cta">
+                    <a href="https://chatgpt.com/g/g-692e842d0dc48191989c1f877d00165d-fixology-repair-assistant" target="_blank" class="btn btn-primary btn-lg">
+                        🧠 Talk to Fixology AI
+                    </a>
+                    <a href="for-shops.html" class="btn btn-secondary btn-lg">
+                        Platform for Shops →
+                    </a>
+                </div>
+                <p style="font-size: 0.75rem; color: var(--text-tertiary);">Opens our AI diagnostic engine • Free to use • No signup required</p>
+                
+                <div class="hero-trust">
+                    <div class="hero-trust-item">
+                        <span>🏆</span>
+                        <span><strong>93%</strong> Diagnostic Accuracy</span>
+                    </div>
+                    <div class="hero-trust-item">
+                        <span>⚡</span>
+                        <span><strong>85%</strong> Faster Intake</span>
+                    </div>
+                    <div class="hero-trust-item">
+                        <span>🛡️</span>
+                        <span><strong>SOC 2</strong> Compliant</span>
+                    </div>
+                    <div class="hero-trust-item">
+                        <span>🔬</span>
+                        <span><strong>Lab-Verified</strong> Results</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Device Support Marquee -->
+        <div class="devices-marquee">
+            <div class="devices-track">
+                <div class="device-item"><span class="device-icon">📱</span> iPhone 8–16 Pro Max</div>
+                <div class="device-item"><span class="device-icon">📱</span> Samsung Galaxy S/A/Z Series</div>
+                <div class="device-item"><span class="device-icon">📱</span> Google Pixel 3–9</div>
+                <div class="device-item"><span class="device-icon">💻</span> MacBook Air & Pro</div>
+                <div class="device-item"><span class="device-icon">🖥️</span> iMac & Mac Mini</div>
+                <div class="device-item"><span class="device-icon">📱</span> iPad All Models</div>
+                <div class="device-item"><span class="device-icon">🎮</span> PS5 & Xbox Series X</div>
+                <div class="device-item"><span class="device-icon">🎮</span> Nintendo Switch</div>
+                <div class="device-item"><span class="device-icon">⌚</span> Apple Watch 3–Ultra</div>
+                <div class="device-item"><span class="device-icon">🎧</span> AirPods All Generations</div>
+                <div class="device-item"><span class="device-icon">💻</span> Dell & HP Laptops</div>
+                <div class="device-item"><span class="device-icon">📱</span> OnePlus & Motorola</div>
+                <!-- Duplicate for seamless loop -->
+                <div class="device-item"><span class="device-icon">📱</span> iPhone 8–16 Pro Max</div>
+                <div class="device-item"><span class="device-icon">📱</span> Samsung Galaxy S/A/Z Series</div>
+                <div class="device-item"><span class="device-icon">📱</span> Google Pixel 3–9</div>
+                <div class="device-item"><span class="device-icon">💻</span> MacBook Air & Pro</div>
+                <div class="device-item"><span class="device-icon">🖥️</span> iMac & Mac Mini</div>
+                <div class="device-item"><span class="device-icon">📱</span> iPad All Models</div>
+                <div class="device-item"><span class="device-icon">🎮</span> PS5 & Xbox Series X</div>
+                <div class="device-item"><span class="device-icon">🎮</span> Nintendo Switch</div>
+                <div class="device-item"><span class="device-icon">⌚</span> Apple Watch 3–Ultra</div>
+                <div class="device-item"><span class="device-icon">🎧</span> AirPods All Generations</div>
+                <div class="device-item"><span class="device-icon">💻</span> Dell & HP Laptops</div>
+                <div class="device-item"><span class="device-icon">📱</span> OnePlus & Motorola</div>
+            </div>
+        </div>
+
+        <!-- Metrics Section -->
+        <section class="metrics-section">
+            <div class="container">
+                <div class="metrics-grid">
+                    <div class="metric-card reveal">
+                        <div class="metric-value" data-counter="100000" data-suffix="+">0</div>
+                        <div class="metric-label">Repair Cases Analyzed</div>
+                    </div>
+                    <div class="metric-card reveal">
+                        <div class="metric-value" data-counter="500" data-suffix="+">0</div>
+                        <div class="metric-label">Symptoms Mapped</div>
+                    </div>
+                    <div class="metric-card reveal">
+                        <div class="metric-value" data-counter="250" data-suffix="+">0</div>
+                        <div class="metric-label">Causes Identified</div>
+                    </div>
+                    <div class="metric-card reveal">
+                        <div class="metric-value" data-counter="150" data-suffix="+">0</div>
+                        <div class="metric-label">Diagnostic Tests</div>
+                    </div>
+                    <div class="metric-card reveal">
+                        <div class="metric-value" data-counter="50" data-suffix="+">0</div>
+                        <div class="metric-label">Device Models</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Awards Bar -->
+        <div class="awards-bar">
+            <div class="award-item">
+                <span class="award-icon">🏆</span>
+                <span>2025 AI Innovation Award Finalist</span>
+            </div>
+            <div class="award-item">
+                <span class="award-icon">🚀</span>
+                <span>Top Startup to Watch 2025</span>
+            </div>
+            <div class="award-item">
+                <span class="award-icon">🛡️</span>
+                <span>Consumer Electronics AI Safety Certified</span>
+            </div>
+            <div class="award-item">
+                <span class="award-icon">✅</span>
+                <span>Independent Lab-Verified: 93% Accuracy</span>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <section class="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">How It Works</span>
+                    <h2 class="section-title">AI Diagnosis in Under 60 Seconds</h2>
+                    <p class="section-subtitle">No guesswork. No long waits. Just accurate, data-backed diagnostics.</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card reveal">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">💬</div>
+                        <h3>Describe Your Issue</h3>
+                        <p>Tell our AI what's wrong with your device. Use natural language — "my phone won't charge" or "screen flickers when hot".</p>
+                    </div>
+                    <div class="step-card reveal">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">🧠</div>
+                        <h3>AI Analyzes Symptoms</h3>
+                        <p>Our diagnostic engine cross-references your symptoms against 100,000+ real repair cases and our symptom-cause-test graph.</p>
+                    </div>
+                    <div class="step-card reveal">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">📋</div>
+                        <h3>Get Your Diagnosis</h3>
+                        <p>Receive likely causes ranked by probability, estimated repair costs, safety warnings, and recommended next steps.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section class="features-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Platform Features</span>
+                    <h2 class="section-title">Enterprise-Grade Diagnostic Engine</h2>
+                    <p class="section-subtitle">Built with the largest symptom–cause–test graph in the industry.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">🎯</div>
+                        <h4>Component-Level Logic</h4>
+                        <p>Not guesses — real diagnostic pathways based on electrical engineering principles.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">📊</div>
+                        <h4>Probability Scoring</h4>
+                        <p>Every diagnosis includes confidence percentages and likelihood rankings.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">🔴</div>
+                        <h4>Red Flag Detection</h4>
+                        <p>Automatic safety warnings for battery swelling, liquid damage, and fire risks.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">📋</div>
+                        <h4>Panic Log Decoder</h4>
+                        <p>Upload iPhone panic logs for instant hardware failure analysis.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">💰</div>
+                        <h4>Real-Time Pricing</h4>
+                        <p>Accurate repair cost estimates based on your location and market rates.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">🔧</div>
+                        <h4>Test Recommendations</h4>
+                        <p>Step-by-step diagnostic tests technicians should perform to confirm causes.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">📚</div>
+                        <h4>SOP Generation</h4>
+                        <p>Auto-generated repair procedures based on the diagnosed issue.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">🌐</div>
+                        <h4>Multi-Device Support</h4>
+                        <p>Phones, tablets, laptops, consoles, wearables, and micro-electronics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dual Audience Section -->
+        <section class="bg-primary">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Who It's For</span>
+                    <h2 class="section-title">Built for Everyone in Repair</h2>
+                </div>
+                <div class="dual-section">
+                    <div class="audience-card">
+                        <div class="audience-icon">👤</div>
+                        <h3>For Customers</h3>
+                        <p class="audience-subtitle">Know what's wrong before you walk into a shop.</p>
+                        <ul class="audience-features">
+                            <li>Free AI diagnosis — no signup required</li>
+                            <li>Understand your device issue in plain English</li>
+                            <li>Get fair price estimates before you commit</li>
+                            <li>Safety warnings if something is dangerous</li>
+                            <li>Find trusted repair shops nearby</li>
+                        </ul>
+                        <a href="https://chatgpt.com/g/g-692e842d0dc48191989c1f877d00165d-fixology-repair-assistant" target="_blank" class="btn btn-primary btn-lg btn-block">
+                            Get Free Diagnosis →
+                        </a>
+                    </div>
+                    <div class="audience-card featured">
+                        <div class="audience-icon">🏪</div>
+                        <h3>For Repair Shops</h3>
+                        <p class="audience-subtitle">The complete AI platform to run your business.</p>
+                        <ul class="audience-features">
+                            <li>AI diagnostic engine for your team</li>
+                            <li>POS, ticketing, and invoicing</li>
+                            <li>Inventory and parts management</li>
+                            <li>Technician training & SOPs</li>
+                            <li>Website chatbot for 24/7 leads</li>
+                            <li>Analytics and business insights</li>
+                        </ul>
+                        <a href="for-shops.html" class="btn btn-cyan btn-lg btn-block">
+                            Explore Platform →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Testimonials</span>
+                    <h2 class="section-title">Trusted by Repair Professionals</h2>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card reveal">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"Fixology caught a board-level issue I would have missed. Saved me from a callback and earned the customer's trust."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">MR</div>
+                            <div>
+                                <div class="testimonial-name">Mike Rodriguez</div>
+                                <div class="testimonial-role">Owner, QuickFix Mobile • Phoenix, AZ</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card reveal">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"The panic log decoder alone is worth it. I'm decoding logs in seconds that used to take me 20 minutes of research."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">SL</div>
+                            <div>
+                                <div class="testimonial-name">Sarah Lin</div>
+                                <div class="testimonial-role">Lead Tech, iRepair NYC • New York</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card reveal">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"Our intake time dropped by 40%. Customers love that we can tell them exactly what's wrong within minutes."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">JT</div>
+                            <div>
+                                <div class="testimonial-name">James Thompson</div>
+                                <div class="testimonial-role">Founder, TechMD • Austin, TX</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners Bar -->
+        <div class="partners-bar">
+            <div class="partners-label">Integrated With Industry Leaders</div>
+            <div class="partners-logos">
+                <span class="partner-logo">RepairDesk</span>
+                <span class="partner-logo">mobilesentrix</span>
+                <span class="partner-logo">iFixit</span>
+                <span class="partner-logo">Injured Gadgets</span>
+                <span class="partner-logo">3uTools</span>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <span class="section-label">Get Started</span>
+                    <h2>Ready to Upgrade Your Repair Game?</h2>
+                    <p>Join 10,000+ technicians using AI-powered diagnostics.</p>
+                    <div class="cta-buttons">
+                        <a href="https://chatgpt.com/g/g-692e842d0dc48191989c1f877d00165d-fixology-repair-assistant" target="_blank" class="btn btn-primary btn-lg">
+                            🧠 Try Fixology AI Free
+                        </a>
+                        <a href="for-shops.html#apply" class="btn btn-secondary btn-lg">
+                            Apply for Shop Access
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">🧠 Fixology</a>
+                    <p>The AI Operating System for Device Repair. Powered by 100,000+ real repair cases and the industry's largest symptom-cause-test graph.</p>
+                </div>
+                <div>
+                    <h5 class="footer-heading">Product</h5>
+                    <ul class="footer-links">
+                        <li><a href="diagnose.html">AI Diagnosis</a></li>
+                        <li><a href="for-shops.html">For Shops</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="devices.html">Device Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="footer-heading">Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="docs.html">Documentation</a></li>
+                        <li><a href="learn.html">Learn</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="api.html">API</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="footer-heading">Company</h5>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="footer-heading">Legal</h5>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="security.html">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2025 Fixology. Built by certified technicians.</span>
+                <div class="footer-legal">
+                    <span>🔒 SOC 2 Compliant</span>
+                    <span>🛡️ GDPR Ready</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/chat-widget.js"></script>
+</body>
+</html>

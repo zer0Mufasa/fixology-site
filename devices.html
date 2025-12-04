@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supported Devices – Fixology</title>
+    <meta name="description" content="Fixology supports 50+ device models across smartphones, tablets, laptops, consoles, and wearables. Full device compatibility list.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <style>
+        .devices-hero { padding: 10rem 2rem 4rem; text-align: center; background: var(--bg-secondary); }
+        .devices-hero h1 { margin-bottom: 1rem; }
+        .devices-hero p { color: var(--text-secondary); font-size: 1.125rem; max-width: 600px; margin: 0 auto 2rem; }
+        
+        .device-stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+        .device-stat { text-align: center; }
+        .device-stat-value { font-size: 2rem; font-weight: 700; color: var(--lavender-300); }
+        .device-stat-label { font-size: 0.875rem; color: var(--text-tertiary); }
+        
+        .category-nav { display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; padding: 1.5rem; background: var(--bg-tertiary); border-bottom: 1px solid var(--border-subtle); position: sticky; top: 60px; z-index: 100; }
+        .category-btn { padding: 0.625rem 1.25rem; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-full); font-size: 0.875rem; color: var(--text-secondary); cursor: pointer; transition: all 0.2s; }
+        .category-btn:hover { border-color: var(--lavender-400); }
+        .category-btn.active { background: var(--gradient-lavender); border-color: var(--lavender-400); color: white; }
+        
+        .devices-section { background: var(--bg-primary); }
+        .category-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+        .category-icon { font-size: 2rem; }
+        .category-header h2 { margin: 0; }
+        .category-count { background: var(--bg-tertiary); padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-size: 0.75rem; color: var(--text-tertiary); }
+        
+        .devices-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 4rem; }
+        .device-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 1.25rem; transition: all 0.2s; }
+        .device-card:hover { border-color: var(--lavender-400); transform: translateY(-2px); }
+        .device-card-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+        .device-card h4 { font-size: 0.9375rem; margin-bottom: 0.25rem; }
+        .device-card p { font-size: 0.75rem; color: var(--text-tertiary); }
+        .device-card .badge { margin-top: 0.75rem; font-size: 0.625rem; }
+        
+        .coverage-section { background: var(--bg-secondary); }
+        .coverage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .coverage-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 1.5rem; text-align: center; }
+        .coverage-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .coverage-card h3 { margin-bottom: 0.5rem; }
+        .coverage-card p { font-size: 0.875rem; color: var(--text-tertiary); }
+        
+        @media (max-width: 1024px) { .devices-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 768px) { 
+            .devices-grid { grid-template-columns: repeat(2, 1fr); } 
+            .coverage-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">🧠 Fixology</a>
+            <ul class="nav-links">
+                <li><a href="diagnose.html">Diagnose</a></li>
+                <li><a href="for-shops.html">For Shops</a></li>
+                <li><a href="devices.html" class="active">Devices</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="docs.html">Docs</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="login.html" class="btn btn-ghost">Login</a>
+                <a href="https://chatgpt.com/g/g-692e842d0dc48191989c1f877d00165d-fixology-repair-assistant" target="_blank" class="btn btn-primary">Try AI →</a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="devices-hero">
+            <div class="container">
+                <span class="badge"><span class="badge-dot"></span>Device Support</span>
+                <h1>All Devices. All Brands.</h1>
+                <p>Fixology's diagnostic engine covers smartphones, tablets, laptops, consoles, wearables, and more. If it breaks, we can diagnose it.</p>
+                <div class="device-stats">
+                    <div class="device-stat">
+                        <div class="device-stat-value">50+</div>
+                        <div class="device-stat-label">Device Models</div>
+                    </div>
+                    <div class="device-stat">
+                        <div class="device-stat-value">8</div>
+                        <div class="device-stat-label">Categories</div>
+                    </div>
+                    <div class="device-stat">
+                        <div class="device-stat-value">500+</div>
+                        <div class="device-stat-label">Symptoms Mapped</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="category-nav">
+            <button class="category-btn active" data-category="all">All Devices</button>
+            <button class="category-btn" data-category="iphone">iPhone</button>
+            <button class="category-btn" data-category="android">Android</button>
+            <button class="category-btn" data-category="tablet">Tablets</button>
+            <button class="category-btn" data-category="laptop">Laptops</button>
+            <button class="category-btn" data-category="console">Consoles</button>
+            <button class="category-btn" data-category="wearable">Wearables</button>
+        </div>
+
+        <section class="devices-section">
+            <div class="container">
+                <!-- iPhone -->
+                <div class="category-header" data-section="iphone">
+                    <span class="category-icon">📱</span>
+                    <h2>iPhone</h2>
+                    <span class="category-count">15 models</span>
+                </div>
+                <div class="devices-grid" data-devices="iphone">
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>iPhone 16 Pro Max</h4><p>Latest flagship</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>iPhone 16 Pro</h4><p>2024 Pro model</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>iPhone 16 / Plus</h4><p>2024 standard</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>iPhone 15 Series</h4><p>All 15 models</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>iPhone 14 Series</h4><p>All 14 models</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>iPhone 13 Series</h4><p>All 13 models</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>iPhone 12 Series</h4><p>All 12 models</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>iPhone 11 Series</h4><p>All 11 models</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>iPhone X / XS / XR</h4><p>X generation</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>iPhone 8 / 8 Plus</h4><p>2017 models</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>iPhone SE (All)</h4><p>SE 1st, 2nd, 3rd</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>iPhone 7 / 7 Plus</h4><p>2016 models</p><span class="badge">Supported</span></div>
+                </div>
+
+                <!-- Android -->
+                <div class="category-header" data-section="android">
+                    <span class="category-icon">📱</span>
+                    <h2>Android Phones</h2>
+                    <span class="category-count">20+ models</span>
+                </div>
+                <div class="devices-grid" data-devices="android">
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>Samsung Galaxy S24</h4><p>Ultra, Plus, Standard</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>Samsung Galaxy S23</h4><p>Ultra, Plus, Standard</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>Samsung Galaxy S22</h4><p>All variants</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>Samsung Galaxy Z Fold</h4><p>Fold 3, 4, 5</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>Samsung Galaxy Z Flip</h4><p>Flip 3, 4, 5</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>Samsung Galaxy A Series</h4><p>A54, A34, A14, etc.</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>Google Pixel 9</h4><p>Pro, Pro XL</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>Google Pixel 8</h4><p>Pro, Standard</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>Google Pixel 7</h4><p>Pro, Standard, 7a</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>OnePlus 12</h4><p>Latest flagship</p><span class="badge">Supported</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>OnePlus 11 / 10</h4><p>Pro models</p><span class="badge">Supported</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>Motorola Edge</h4><p>Edge series</p><span class="badge">Supported</span></div>
+                </div>
+
+                <!-- Tablets -->
+                <div class="category-header" data-section="tablet">
+                    <span class="category-icon">📱</span>
+                    <h2>Tablets</h2>
+                    <span class="category-count">10+ models</span>
+                </div>
+                <div class="devices-grid" data-devices="tablet">
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>iPad Pro M4</h4><p>11" and 13"</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>iPad Pro M2</h4><p>11" and 12.9"</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>iPad Air M2</h4><p>Latest Air</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>iPad 10th Gen</h4><p>Standard iPad</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>iPad Mini 6</h4><p>Compact iPad</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>Samsung Galaxy Tab S9</h4><p>Ultra, Plus, Standard</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">📱</div><h4>Samsung Galaxy Tab S8</h4><p>All variants</p><span class="badge">Supported</span></div>
+                </div>
+
+                <!-- Laptops -->
+                <div class="category-header" data-section="laptop">
+                    <span class="category-icon">💻</span>
+                    <h2>Laptops</h2>
+                    <span class="category-count">12+ models</span>
+                </div>
+                <div class="devices-grid" data-devices="laptop">
+                    <div class="device-card"><div class="device-card-icon">💻</div><h4>MacBook Pro M3</h4><p>14" and 16"</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">💻</div><h4>MacBook Pro M2</h4><p>All M2 variants</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">💻</div><h4>MacBook Air M3</h4><p>Latest Air</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">💻</div><h4>MacBook Air M2</h4><p>13" and 15"</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">💻</div><h4>MacBook Air M1</h4><p>2020 model</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">💻</div><h4>MacBook Pro Intel</h4><p>2016-2020</p><span class="badge">Supported</span></div>
+                    <div class="device-card"><div class="device-card-icon">🖥️</div><h4>iMac M3</h4><p>24" all-in-one</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">🖥️</div><h4>Mac Mini M2</h4><p>Compact desktop</p><span class="badge badge-success">Full Support</span></div>
+                </div>
+
+                <!-- Consoles -->
+                <div class="category-header" data-section="console">
+                    <span class="category-icon">🎮</span>
+                    <h2>Game Consoles</h2>
+                    <span class="category-count">6 models</span>
+                </div>
+                <div class="devices-grid" data-devices="console">
+                    <div class="device-card"><div class="device-card-icon">🎮</div><h4>PlayStation 5</h4><p>Standard & Digital</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">🎮</div><h4>PlayStation 4</h4><p>Pro & Slim</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">🎮</div><h4>Xbox Series X|S</h4><p>Both variants</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">🎮</div><h4>Xbox One</h4><p>All variants</p><span class="badge">Supported</span></div>
+                    <div class="device-card"><div class="device-card-icon">🎮</div><h4>Nintendo Switch</h4><p>OLED, Standard, Lite</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">🎮</div><h4>Steam Deck</h4><p>All storage variants</p><span class="badge">Supported</span></div>
+                </div>
+
+                <!-- Wearables -->
+                <div class="category-header" data-section="wearable">
+                    <span class="category-icon">⌚</span>
+                    <h2>Wearables</h2>
+                    <span class="category-count">8+ models</span>
+                </div>
+                <div class="devices-grid" data-devices="wearable">
+                    <div class="device-card"><div class="device-card-icon">⌚</div><h4>Apple Watch Ultra 2</h4><p>Latest Ultra</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">⌚</div><h4>Apple Watch Series 9</h4><p>Latest standard</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">⌚</div><h4>Apple Watch SE</h4><p>2nd generation</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">⌚</div><h4>Apple Watch 3-8</h4><p>Older series</p><span class="badge">Supported</span></div>
+                    <div class="device-card"><div class="device-card-icon">🎧</div><h4>AirPods Pro 2</h4><p>USB-C version</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">🎧</div><h4>AirPods 3rd Gen</h4><p>Standard AirPods</p><span class="badge badge-success">Full Support</span></div>
+                    <div class="device-card"><div class="device-card-icon">🎧</div><h4>AirPods Max</h4><p>Over-ear headphones</p><span class="badge">Supported</span></div>
+                    <div class="device-card"><div class="device-card-icon">⌚</div><h4>Samsung Galaxy Watch</h4><p>Watch 5, 6 series</p><span class="badge">Supported</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coverage Info -->
+        <section class="coverage-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">What We Cover</span>
+                    <h2 class="section-title">Comprehensive Diagnostic Coverage</h2>
+                </div>
+                <div class="coverage-grid">
+                    <div class="coverage-card">
+                        <div class="coverage-icon">🔋</div>
+                        <h3>Power & Battery</h3>
+                        <p>Charging issues, battery health, power management, boot problems</p>
+                    </div>
+                    <div class="coverage-card">
+                        <div class="coverage-icon">📱</div>
+                        <h3>Display & Touch</h3>
+                        <p>Screen damage, touch sensitivity, display artifacts, backlight issues</p>
+                    </div>
+                    <div class="coverage-card">
+                        <div class="coverage-icon">🔊</div>
+                        <h3>Audio & Speakers</h3>
+                        <p>Speaker failures, microphone issues, audio distortion, volume problems</p>
+                    </div>
+                    <div class="coverage-card">
+                        <div class="coverage-icon">📶</div>
+                        <h3>Connectivity</h3>
+                        <p>WiFi, Bluetooth, cellular signal, GPS, NFC issues</p>
+                    </div>
+                    <div class="coverage-card">
+                        <div class="coverage-icon">📷</div>
+                        <h3>Camera & Sensors</h3>
+                        <p>Camera failures, Face ID, Touch ID, proximity sensors</p>
+                    </div>
+                    <div class="coverage-card">
+                        <div class="coverage-icon">💧</div>
+                        <h3>Liquid Damage</h3>
+                        <p>Water damage assessment, corrosion detection, recovery potential</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="bg-tertiary" style="text-align: center;">
+            <div class="container">
+                <h2>Don't See Your Device?</h2>
+                <p class="section-subtitle" style="margin-bottom: 2rem;">Our AI can still help. Describe your issue and we'll do our best to diagnose it.</p>
+                <a href="https://chatgpt.com/g/g-692e842d0dc48191989c1f877d00165d-fixology-repair-assistant" target="_blank" class="btn btn-primary btn-lg">
+                    Talk to Fixology AI →
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <span>© 2025 Fixology</span>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Category filtering
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const category = btn.dataset.category;
+                
+                document.querySelectorAll('[data-section]').forEach(section => {
+                    section.style.display = (category === 'all' || section.dataset.section === category) ? 'flex' : 'none';
+                });
+                
+                document.querySelectorAll('[data-devices]').forEach(grid => {
+                    grid.style.display = (category === 'all' || grid.dataset.devices === category) ? 'grid' : 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

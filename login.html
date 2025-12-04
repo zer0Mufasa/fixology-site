@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login – Fixology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        .login-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 6rem 2rem 2rem; }
+        .login-container { width: 100%; max-width: 440px; }
+        .login-header { text-align: center; margin-bottom: 2rem; }
+        .login-header h1 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+        .login-header p { color: var(--text-secondary); }
+        .login-card { background: var(--bg-card); border: 1px solid var(--border-medium); border-radius: var(--radius-2xl); overflow: hidden; }
+        .login-tabs { display: grid; grid-template-columns: 1fr 1fr; }
+        .login-tab { padding: 1rem; background: var(--bg-secondary); border: none; font-family: inherit; font-size: 0.9375rem; font-weight: 500; color: var(--text-secondary); cursor: pointer; }
+        .login-tab.active { background: var(--bg-card); color: var(--lavender-300); }
+        .login-content { padding: 2rem; }
+        .login-panel { display: none; }
+        .login-panel.active { display: block; }
+        .form-actions { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; font-size: 0.875rem; }
+        .form-link { color: var(--lavender-300); }
+        .divider { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0; color: var(--text-tertiary); font-size: 0.8125rem; }
+        .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border-subtle); }
+        .alt-action { text-align: center; }
+        .alt-action p { font-size: 0.875rem; color: var(--text-tertiary); margin-bottom: 1rem; }
+        .coming-soon { background: var(--bg-tertiary); border-radius: var(--radius-lg); padding: 2rem; text-align: center; }
+        .coming-soon-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .login-footer { text-align: center; margin-top: 2rem; font-size: 0.875rem; color: var(--text-tertiary); }
+        .login-footer a { color: var(--lavender-300); }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">🧠 Fixology</a>
+            <div class="nav-cta">
+                <a href="index.html" class="btn btn-ghost">Home</a>
+            </div>
+        </div>
+    </nav>
+    <main class="login-page">
+        <div class="login-container">
+            <div class="login-header">
+                <h1>Welcome Back</h1>
+                <p>Sign in to your account</p>
+            </div>
+            <div class="login-card">
+                <div class="login-tabs">
+                    <button class="login-tab active" data-tab="shop">🏪 Shop Portal</button>
+                    <button class="login-tab" data-tab="customer">👤 Customer</button>
+                </div>
+                <div class="login-content">
+                    <div class="login-panel active" data-panel="shop">
+                        <form>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" placeholder="you@repairshop.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-input" placeholder="••••••••">
+                            </div>
+                            <div class="form-actions">
+                                <label><input type="checkbox"> Remember me</label>
+                                <a href="#" class="form-link">Forgot password?</a>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
+                        </form>
+                        <div class="divider">or</div>
+                        <div class="alt-action">
+                            <p>Don't have an account?</p>
+                            <a href="for-shops.html#apply" class="btn btn-secondary btn-block">Apply for Access</a>
+                        </div>
+                    </div>
+                    <div class="login-panel" data-panel="customer">
+                        <div class="coming-soon">
+                            <div class="coming-soon-icon">🚧</div>
+                            <h3>Customer Portal Coming Soon</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Track repairs and view diagnosis history.</p>
+                            <a href="diagnose.html" class="btn btn-primary">Get Free Diagnosis</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="login-footer">
+                <p>By signing in, you agree to our <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.</p>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.querySelectorAll('.login-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.login-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.login-panel').forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.querySelector(`[data-panel="${tab.dataset.tab}"]`).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
