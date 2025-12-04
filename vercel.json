@@ -1,0 +1,29 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/diagnose", "destination": "/diagnose.html" },
+    { "source": "/for-shops", "destination": "/for-shops.html" },
+    { "source": "/pricing", "destination": "/pricing.html" },
+    { "source": "/learn", "destination": "/learn.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/login", "destination": "/login.html" },
+    { "source": "/partners", "destination": "/partners.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/results", "destination": "/results.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/dashboard", "destination": "/dashboard/preview.html" }
+  ]
+}
