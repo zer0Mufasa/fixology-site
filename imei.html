@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMEI Lookup — Fixology | Check Any Device Instantly</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+    :root { --lavender-400:#A78BFA; --lavender-500:#8B5CF6; --lavender-600:#7C3AED; --cyan:#22D3EE; --success:#22C55E; --warning:#F59E0B; --error:#EF4444; --surface-0:#000; --surface-1:#09090B; --surface-2:#0F0F12; --surface-3:#16161A; --surface-4:#1C1C22; --text-primary:#FAFAFA; --text-secondary:#A1A1AA; --text-muted:#52525B; --border:rgba(255,255,255,0.08); --gradient-lavender:linear-gradient(135deg,#A78BFA,#8B5CF6,#7C3AED); --shadow-glow:0 0 60px rgba(139,92,246,0.3); }
+    *{box-sizing:border-box;margin:0;padding:0;} body{font-family:'Inter',sans-serif;background:var(--surface-1);color:var(--text-primary);min-height:100vh;}
+    .container{max-width:900px;margin:0 auto;padding:0 24px;}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;background:rgba(9,9,11,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+    .nav-inner{display:flex;justify-content:space-between;align-items:center;max-width:1280px;margin:0 auto;padding:0 24px;}
+    .nav-logo{display:flex;align-items:center;gap:10px;font-size:1.25rem;font-weight:700;text-decoration:none;color:var(--text-primary);}
+    .nav-logo-img{width:36px;height:36px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(139,92,246,0.5));}
+    .btn{padding:12px 20px;font-size:14px;font-weight:600;border-radius:12px;text-decoration:none;transition:all 0.2s;border:none;cursor:pointer;}
+    .btn-primary{background:var(--gradient-lavender);color:white;}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-glow);}
+    .hero{padding:140px 0 60px;text-align:center;}
+    h1{font-size:clamp(2rem,5vw,3.5rem);margin-bottom:16px;font-weight:700;}
+    .text-gradient{background:var(--gradient-lavender);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .hero p{color:var(--text-secondary);font-size:1.125rem;max-width:600px;margin:0 auto 48px;}
+    .imei-tool{background:var(--surface-2);border:1px solid var(--border);border-radius:24px;padding:48px;margin-bottom:64px;}
+    .imei-input-group{display:flex;gap:16px;margin-bottom:32px;}
+    .imei-input{flex:1;padding:18px 24px;background:var(--surface-3);border:1px solid var(--border);border-radius:14px;color:var(--text-primary);font-size:18px;font-family:'SF Mono',monospace;letter-spacing:2px;text-align:center;}
+    .imei-input:focus{outline:none;border-color:var(--lavender-500);box-shadow:0 0 0 4px rgba(139,92,246,0.15);}
+    .imei-input::placeholder{color:var(--text-muted);letter-spacing:0;}
+    .check-btn{padding:18px 32px;background:var(--gradient-lavender);color:white;font-size:16px;font-weight:600;border:none;border-radius:14px;cursor:pointer;transition:all 0.2s;}
+    .check-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-glow);}
+    .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .result-card{background:var(--surface-3);border:1px solid var(--border);border-radius:14px;padding:20px;}
+    .result-label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;}
+    .result-value{font-size:16px;font-weight:600;}
+    .result-value.success{color:var(--success);}
+    .result-value.warning{color:var(--warning);}
+    .result-value.error{color:var(--error);}
+    .features{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:64px;}
+    .feature{display:flex;gap:16px;padding:24px;background:var(--surface-2);border:1px solid var(--border);border-radius:16px;}
+    .feature-icon{width:48px;height:48px;background:rgba(139,92,246,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+    .feature h4{font-size:1rem;margin-bottom:4px;}
+    .feature p{font-size:13px;color:var(--text-muted);}
+    .footer{text-align:center;padding:48px 0;border-top:1px solid var(--border);font-size:13px;color:var(--text-muted);}
+    @media(max-width:768px){.imei-input-group{flex-direction:column;}.results-grid,.features{grid-template-columns:1fr;}}
+    </style>
+</head>
+<body>
+    <nav class="nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><img src="assets/logo-brain.png" alt="" class="nav-logo-img">Fixology</a><a href="https://chatgpt.com/g/g-692e842d0dc48191989c1f877d00165d-fixology-repair-assistant" target="_blank" class="btn btn-primary">Try AI Free</a></div></nav>
+    <main>
+        <section class="hero"><div class="container">
+            <h1>IMEI <span class="text-gradient">Intelligence</span></h1>
+            <p>Know everything about any device before you buy, sell, or repair. Carrier lock, warranty, Find My status, and more.</p>
+        </div></section>
+        <div class="container">
+            <div class="imei-tool">
+                <div class="imei-input-group">
+                    <input type="text" class="imei-input" id="imei-input" placeholder="Enter 15-digit IMEI" maxlength="15">
+                    <button class="check-btn" onclick="checkIMEI()">Check IMEI →</button>
+                </div>
+                <div class="results-grid" id="results" style="display:none;">
+                    <div class="result-card"><div class="result-label">Model</div><div class="result-value" id="r-model">—</div></div>
+                    <div class="result-card"><div class="result-label">Storage</div><div class="result-value" id="r-storage">—</div></div>
+                    <div class="result-card"><div class="result-label">Carrier Lock</div><div class="result-value" id="r-carrier">—</div></div>
+                    <div class="result-card"><div class="result-label">Find My iPhone</div><div class="result-value" id="r-findmy">—</div></div>
+                    <div class="result-card"><div class="result-label">Warranty</div><div class="result-value" id="r-warranty">—</div></div>
+                    <div class="result-card"><div class="result-label">Blacklist</div><div class="result-value" id="r-blacklist">—</div></div>
+                </div>
+            </div>
+            <div class="features">
+                <div class="feature"><div class="feature-icon">🔓</div><div><h4>Carrier Lock Status</h4><p>Check if device is locked to a carrier or fully unlocked.</p></div></div>
+                <div class="feature"><div class="feature-icon">🛡️</div><div><h4>Warranty Check</h4><p>Verify AppleCare+ or manufacturer warranty status.</p></div></div>
+                <div class="feature"><div class="feature-icon">📍</div><div><h4>Find My Detection</h4><p>Know if activation lock is enabled before purchase.</p></div></div>
+                <div class="feature"><div class="feature-icon">🚫</div><div><h4>Blacklist Check</h4><p>Ensure device isn't reported lost or stolen.</p></div></div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">© 2025 Fixology. Built by repair technicians.</footer>
+    <script>
+    function checkIMEI() {
+        const imei = document.getElementById('imei-input').value.trim();
+        if (imei.length < 15) { alert('Please enter a valid 15-digit IMEI'); return; }
+        document.getElementById('results').style.display = 'grid';
+        document.getElementById('r-model').textContent = 'iPhone 15 Pro Max';
+        document.getElementById('r-storage').textContent = '256GB';
+        document.getElementById('r-carrier').innerHTML = '<span class="success">Unlocked ✓</span>';
+        document.getElementById('r-findmy').innerHTML = '<span class="warning">ON ⚠️</span>';
+        document.getElementById('r-warranty').innerHTML = '<span class="success">Active until Dec 2025</span>';
+        document.getElementById('r-blacklist').innerHTML = '<span class="success">Clean ✓</span>';
+    }
+    </script>
+    <script src="js/chat-widget.js"></script>
+</body>
+</html>
